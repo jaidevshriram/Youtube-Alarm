@@ -12,10 +12,33 @@
 
     <title>Youtube Alarm</title>
   </head>
-  <body>
+  <body onload="Activate()">
 
-    <div class="container-fluid w-100 bg-dark nav">
-          <div class="navbar navbar-expand-lg navbar-dark bg-dark w-100">
+	<div class="modal fade" id="Set-Alarm" tabindex="-1" role="dialog">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h1 class="modal-title">Your alarm has been set!</h1>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	        We will wake you up at exactly
+	        <br>
+	        <h1><span class="time"></span></h1>
+	        by playing
+	        <h3><strong>Shake it Off</strong> by Taylor Swift</h3>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Nice!</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
+    <div class="container-fluid w-100 bg-secondary nav">
+          <div class="navbar navbar-expand-lg navbar-dark bg-secondary w-100">
             <a href="index.html" class="navbar-brand justify-self-center align-items-center">
               <h1>
                 Youtube Alarm
@@ -26,28 +49,49 @@
 
     <div class="container-fluid" id="content">
       <div class="row h-100">
-        <div class="col col-xs-12 col-md-6 bg-secondary info text-center">
-          <div class="text-white align-items-center justify-items-center vertical-center">
+        <div class="col bg-dark info text-center d-flex align-items-center justify-content-center">
+          <div class="text-white">
             <h1>
-              Enter your wake up alarm time here!
+              <span id="current-time"></span>
             </h1>
+
+            <div id="set-alarm">
+	            <h2>Set your Alarm Time:</h2>
+	            <p>
+	            	<i>(In 24 Hour Format)</i>
+	            </p>
+	            
+	            	<div class="form-group">
+	            		<input type="number" name="hour" placeholder="9" min="0" max="23" id="hour">
+	            		<h1 style="display: inline-block;"> : </h1>
+	            		<input type="number" name="minutes" placeholder="15" min="0" max="59" id="minutes">
+	            	</div>
+	          		<div class="form-group">
+	          			<input type="submit" name="alarm-set" class="btn btn-light" value="Wake me up then!" onclick="alarm()">
+	          		</div>
+	            
+        	</div>
+            <span id="time-left"></span>
           </div>
         </div>
 
-        <div class="col youtube text-center">
-          <div class="text-white vertical-center">
-          	<form>
-          		<div class="for">
-          			
+        <div class="col youtube text-center d-flex align-items-center justify-content-center">
+          <div class="text-white">
+          	<form action="alarm()">
+          		<div class="form-group">
+          			<label for="youtube-url">Enter your Youtube URL</label>
+          			<input type="text" name="youtube-url" required="" class="form-control">	
           		</div>
           	</form>
+          	<div id="player"></div>
           </div>
         </div>      
       </div>
     </div>
 
     <!-- Optional JavaScript -->
-
+    <script type="text/javascript" src="js/script.js"></script>
+    <script type="text/javascript" src="https://www.youtube.com/iframe_api"></script>
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
