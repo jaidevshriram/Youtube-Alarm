@@ -41,7 +41,7 @@ function setalarm() {
 	var minutes = $("#minutes").val();
 	hour = update(hour);
 	minutes = update(minutes);
-	$('#Set-Alarm').find('.time').text(hour + " : " + minutes);
-	$('#Set-Alarm').modal();
+	$('#Set-Alarm-Modal').find('.time').text(hour + " : " + minutes);
+	$('#Set-Alarm-Modal').modal();
 	$('#set-alarm').css("display","none");
 }

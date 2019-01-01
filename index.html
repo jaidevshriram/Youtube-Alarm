@@ -14,7 +14,7 @@
   </head>
   <body onload="Activate()">
 
-	<div class="modal fade" id="Set-Alarm" tabindex="-1" role="dialog">
+	<div class="modal fade" id="Set-Alarm-Modal" tabindex="-1" role="dialog">
 	  <div class="modal-dialog" role="document">
 	    <div class="modal-content">
 	      <div class="modal-header">
@@ -61,17 +61,18 @@
 	            	<i>(In 24 Hour Format)</i>
 	            </p>
 	            
-	            	<div class="form-group">
-	            		<input type="number" name="hour" placeholder="9" min="0" max="23" id="hour">
-	            		<h1 style="display: inline-block;"> : </h1>
-	            		<input type="number" name="minutes" placeholder="15" min="0" max="59" id="minutes">
-	            	</div>
-	          		<div class="form-group">
-	          			<input type="submit" name="alarm-set" class="btn btn-light" value="Wake me up then!" onclick="setalarm()">
-	          		</div>
-	            
-        	   </div>
+            	<div class="form-group">
+            		<input type="number" name="hour" placeholder="9" min="0" max="23" id="hour">
+            		<h1 style="display: inline-block;"> : </h1>
+            		<input type="number" name="minutes" placeholder="15" min="0" max="59" id="minutes">
+            	</div>
+          		<div class="form-group">
+          			<input type="submit" name="alarm-set" class="btn btn-light" value="Wake me up then!" onclick="setalarm()">
+          		</div>
+            </div>
+            
             <span id="time-left"></span>
+
           </div>
         </div>
 
