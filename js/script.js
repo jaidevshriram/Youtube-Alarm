@@ -36,17 +36,9 @@ function Activate( jQuery ) {
   width: '640',
   videoId: 'nfWlot6h_JM',
   autoplay: '0',
-  loop: '0',
-  events: {
-    'onReady': onPlayerReady
-  }
+  loop: '1',
 });
 
-  player.pauseVideo();
-}
-
-function onPlayerReady(event) {
-    event.target.playVideo();
 }
 
 function setalarm() {
