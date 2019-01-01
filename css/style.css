@@ -9,6 +9,8 @@ html, body{
 .nav {
 	height: 10%;
 	border: rgba(255,0,0,1);
+	min-width: 100%;
+	align-content: center;
 }
 
 .row{
@@ -23,8 +25,7 @@ html, body{
 	max-height: 100%!important;
 	width: 100%;
 	height: auto;
-	background: url("../img/bg-youtube.jpg");
-	background: -webkit-gradient(linear, left top, left bottom, from(rgba(1, 1, 1, 0.8)), color-stop(70%, rgba(1, 1, 1, 0.8)), to(rgba(1, 1, 1, 0.8))), url("../img/bg-youtube.jpg");
+	background: -webkit-gradient(linear, left top, left bottom, from(rgba(1, 1, 1, 0.8)), color-stop(70%, rgba(1, 1, 1, 0.8)), to(rgba(1, 1, 1, 0.8)));
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;

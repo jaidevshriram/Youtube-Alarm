@@ -36,6 +36,9 @@ function update(time)
 
 var player;
 function Activate() {
+
+  $('#Welcome').modal();
+
   player = new YT.Player('player', {
   height: '390',
   width: '640',
@@ -74,6 +77,7 @@ function setalarm() {
 	$('#alarm-time-set').css("display","block");
 
 	$('#reset').css("display","block");
+	$('#player').css("display","block");
 }
 
 function check() {
@@ -83,9 +87,10 @@ function check() {
 
 		if(current_hour == alarm_hour && current_minute == alarm_minute)
 		{
-			$('#player').css("display","block");
 			$('#youtube-video').css("display","none");
 			player.playVideo();
+			$('alarm-time-set').css("display", "none");
+			$('#Time-Up').modal();
 		}
 	}
 }
