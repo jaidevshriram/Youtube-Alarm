@@ -34,25 +34,26 @@ function update(time)
 	return time;
 }
 
+
 var player;
 function Activate() {
 
   $('#Welcome').modal();
 
   player = new YT.Player('player', {
-  height: '390',
-  width: '640',
-  videoId: videoURLId,
-  autoplay: '0',
-  loop: '1',
-  controls: '0',
-  disablekb: '1',
-  list: videoURLId,
-  playlist: videoURLId,
-  event: {
-  	'onStateChange' : onPlayerStateChange
-  }
-});
+   	  height: '390',
+	  width: '640',
+	  videoId: videoURLId,
+	  autoplay: '0',
+	  loop: '1',
+	  controls: '0',
+	  disablekb: '1',
+	  list: videoURLId,
+	  playlist: videoURLId,
+	  event: {
+	  	'onStateChange' : onPlayerStateChange
+	  }
+	});
 }
 
 function onPlayerStateChange(event) {
@@ -89,6 +90,7 @@ function check() {
 		{
 			$('#youtube-video').css("display","none");
 			player.playVideo();
+			alarm=0;
 			$('alarm-time-set').css("display", "none");
 			$('#Time-Up').modal();
 		}
