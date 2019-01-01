@@ -35,7 +35,7 @@ function update(time)
 }
 
 var player;
-function onYoutubePlayerAPIReady( ) {
+function Activate() {
   player = new YT.Player('player', {
   height: '390',
   width: '640',
