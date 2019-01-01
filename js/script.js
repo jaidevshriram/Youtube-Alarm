@@ -19,7 +19,7 @@ function currenttime() {
 	hours = update(hours);
 	minutes = update(minutes);
 	second = update(seconds);
-	$('#current-time').html(hours + " : " + minutes);
+	$('#current-time').html(hours + " : " + minutes + " : " + seconds);
 
 	if(alarm == 0) {
 		$('#player').css("display","none");
