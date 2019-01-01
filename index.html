@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script type="text/javascript" src="https://www.youtube.com/iframe_api"></script>
 
     <title>Youtube Alarm</title>
   </head>
@@ -17,31 +18,72 @@
 	<div class="modal fade" id="Set-Alarm-Modal" tabindex="-1" role="dialog">
 	  <div class="modal-dialog" role="document">
 	    <div class="modal-content">
-	      <div class="modal-header">
+	      <div class="modal-header bg-success">
 	        <h1 class="modal-title">Your alarm has been set!</h1>
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 	          <span aria-hidden="true">&times;</span>
 	        </button>
 	      </div>
 	      <div class="modal-body">
-	        We will wake you up at exactly
-	        <br>
-	        <h1><span class="time"></span></h1>
-	        by playing
-	        <h3><strong>Shake it Off</strong> by Taylor Swift</h3>
-	      </div>
+          <div class="col text-center">
+  	        We will wake you up at exactly
+  	        <br>
+  	        <h1><span class="time"></span></h1>
+  	        by playing
+  	        <h3><strong>Shake it Off</strong> by Taylor Swift</h3>
+            <img src="img/shake-it-off.gif" width="100%" style="margin-bottom: 10px; margin-top: 10px;">
+            <br>
+            <h2>
+              Want a different video instead?
+            </h2>
+            <p>
+              Copy Paste the URL of the Youtube video into the URL Field to the right and hit change video.
+            </p>
+	        </div>
+        </div>
 	      <div class="modal-footer">
-	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Nice!</button>
+	        <button type="button" class="btn btn-outline-success" data-dismiss="modal">Nice!</button>
 	      </div>
 	    </div>
 	  </div>
 	</div>
 
+  <div class="modal fade" id="Change-Video" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header bg-warning">
+          <h2 class="modal-title">Alarm Video Changed!</h2>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="col text-center">
+            The new alarm video is set to
+            <h3><strong><span id="new-vid-title"></span></strong></h3>
+            <img src="img/shake-it-off.gif" width="100%" style="margin-bottom: 10px; margin-top: 10px;">
+            <br>
+            <h2>
+              Want a different video instead?
+            </h2>
+            <p>
+              Copy Paste the URL of the Youtube video into the URL Field to the right and hit change video.
+            </p>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Nice!</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
     <div class="container-fluid w-100 bg-secondary nav">
-          <div class="navbar navbar-expand-lg navbar-dark bg-secondary w-100">
+          <div class="navbar navbar-expand-lg navbar-dark bg-black-nav w-100">
             <a href="index.html" class="navbar-brand justify-self-center align-items-center">
-              <h1>
-                Youtube Alarm
+              <img src="img/logo.svg.png" height="70px" style="margin-right: 25px; position: center; display: inline-block;">
+              <h1 style="display: inline-block; position: inherit;">
+                Alarm
               </h1>
             </a>
           </div>
@@ -49,14 +91,25 @@
 
     <div class="container-fluid" id="content">
       <div class="row h-100">
-        <div class="col bg-dark info text-center d-flex align-items-center justify-content-center">
-          <div class="text-white">
+        <div class="col bg-black info text-center d-flex align-items-center justify-content-center flex-column my-flex-container-column">
+          <div class="text-white my-flex-item">
             <h1>
-              <span id="current-time"></span>
+              The time is
+              <span id="current-time" class="time"></span>
             </h1>
+
+            <h1 id="alarm-time-set" style="display: none;">
+              Alarm set for
+              <span id="alarm-time" class="alarm-time"></span>
+            </h1>
+
+            <button class="btn btn-light" onClick="window.location.href=window.location.href" style="display: none;" id="reset">
+              Reset Alarm
+            </button>
 
             <div id="set-alarm">
 	            <h2>Set your Alarm Time:</h2>
+              <br>
 	            <p>
 	            	<i>(In 24 Hour Format)</i>
 	            </p>
@@ -70,20 +123,20 @@
           			<input type="submit" name="alarm-set" class="btn btn-light" value="Wake me up then!" onclick="setalarm()">
           		</div>
             </div>
-            
-            <span id="time-left"></span>
 
+            <span id="time-left"></span>
           </div>
         </div>
 
         <div class="col youtube text-center d-flex align-items-center justify-content-center">
-          <div class="text-white">
-          	<form action="alarm()">
-          		<div class="form-group">
-          			<label for="youtube-url">Enter your Youtube URL</label>
-          			<input type="text" name="youtube-url" required="" class="form-control">	
-          		</div>
-          	</form>
+          <div class="text-white" id="youtube-video" style="display: none;">         	
+        		<div class="form-group">
+        			<label for="youtube-url">Enter your Youtube URL</label>
+        			<input type="text" name="youtube-url" required="" class="form-control" id="youtube-url">	
+        		</div>
+            <div class="form-group">
+              <input type="submit" name="change-url" class="btn btn-warning" value="Use this to wake me up" onclick="changeurl()" id="change-url">
+            </div>
           	<div id="player"></div>
           </div>
         </div>      
