@@ -35,7 +35,7 @@ function update(time)
 }
 
 var player;
-function Activate( jQuery ) {
+function onYoutubePlayerAPIReady( ) {
   player = new YT.Player('player', {
   height: '390',
   width: '640',
@@ -43,8 +43,20 @@ function Activate( jQuery ) {
   autoplay: '0',
   loop: '1',
   controls: '0',
-  disablekb: '1'
+  disablekb: '1',
+  list: videoURLId,
+  playlist: videoURLId,
+  event: {
+  	'onStateChange' : onPlayerStateChange
+  }
 });
+}
+
+function onPlayerStateChange(event) {
+if (event.data == YT.PlayerState.ENDED) {
+  player.seekTo(0);
+  player.playVideo();
+}
 }
 
 function setalarm() {
