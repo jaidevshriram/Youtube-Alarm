@@ -36,14 +36,12 @@ function onPlayerReady(event) {
     event.target.playVideo();
 }
 
-function alarm() {
+function setalarm() {
 	var hour = $("#hour").val();
 	var minutes = $("#minutes").val();
 	hour = update(hour);
 	minutes = update(minutes);
 	$('#Set-Alarm').find('.time').text(hour + " : " + minutes);
 	$('#Set-Alarm').modal();
-	player.autoplay = '1';
+	$('#set-alarm').css("display","none");
 }
-
-$( window ).on( "load" , Activate );
